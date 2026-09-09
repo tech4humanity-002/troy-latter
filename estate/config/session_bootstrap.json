@@ -1,0 +1,37 @@
+{
+  "required_for_every_session": true,
+  "version": "1.0.0",
+  "date": "2026-09-06",
+  "load_before_any_work": [
+    "CANONICAL_ESTATE_GUIDE_v1.md",
+    "WORKER_ONBOARDING_BOOKLET.md",
+    "bootstrap/daily/YYYY-MM-DD.md"
+  ],
+  "core_rules": [
+    "Files are truth, not memory",
+    "Preserve everything",
+    "Write receipts",
+    "Universal Template for every source",
+    "Create session bootstrap at bootstrap/sessions/session_YYYYMMDD_HHMMSS.md"
+  ],
+  "thresholds": {
+    "curator_trigger": "5+ new sources in incoming/",
+    "task_workers_trigger": "30+ jobs in Daily Delta",
+    "all_workers_trigger": "10+ high-priority jobs",
+    "convener_alert": "5+ blocked jobs OR 1+ critical risk"
+  },
+  "session_start_checklist": [
+    "Loaded CANONICAL_ESTATE_GUIDE_v1.md",
+    "Loaded WORKER_ONBOARDING_BOOKLET.md",
+    "Loaded bootstrap/daily/YYYY-MM-DD.md",
+    "Loaded relevant work items",
+    "Loaded recent receipts",
+    "Created session bootstrap file"
+  ],
+  "session_end_checklist": [
+    "Wrote receipt(s) for all material work",
+    "Proposed daily bootstrap delta",
+    "All state captured in estate files",
+    "No reliance on model memory for truth"
+  ]
+}
