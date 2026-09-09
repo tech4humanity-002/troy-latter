@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://estate.tech4humanity.org/schemas/session-bootstrap.v1.json",
+  "title": "Session Bootstrap v1",
+  "description": "Every session must have this bootstrap. Worker validates against this schema.",
+  "type": "object",
+  "required": [
+    "session_id",
+    "loaded_guide",
+    "loaded_onboarding",
+    "loaded_bootstrap",
+    "core_rules_acknowledged",
+    "start_checklist"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^session_[0-9]{8}_[0-9]{6}$",
+      "description": "Session ID format: session_YYYYMMDD_HHMMSS"
+    },
+    "loaded_guide": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true - CANONICAL_ESTATE_GUIDE_v1.md loaded"
+    },
+    "loaded_onboarding": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true - Onboarding booklet loaded"
+    },
+    "loaded_bootstrap": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true - Daily bootstrap loaded"
+    },
+    "core_rules_acknowledged": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true - Core rules acknowledged"
+    },
+    "start_checklist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 5,
+      "description": "At least 5 checklist items must be completed"
+    }
+  },
+  "additionalProperties": false
+}
