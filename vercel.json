@@ -16,6 +16,16 @@
       "source": "/LAB3",
       "destination": "/LAB3/",
       "permanent": false
+    },
+    {
+      "source": "/EY-Parthenon",
+      "destination": "/ey-parthenon/",
+      "permanent": false
+    },
+    {
+      "source": "/EY-Parthenon/",
+      "destination": "/ey-parthenon/",
+      "permanent": false
     }
   ],
   "rewrites": [
