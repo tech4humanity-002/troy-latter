@@ -1,9 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import fs from "fs";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+const copyApplicationPackages = () => ({
+  name: "copy-application-packages",
+  closeBundle() {
+    for (const name of ["LAB3", "Infosys"]) {
+      fs.cpSync(path.resolve(__dirname, name), path.resolve(__dirname, "dist", name), { recursive: true });
+    }
+  },
+});
+
 export default defineConfig(({ mode }) => ({
   base: '/',
   server: {
@@ -12,8 +21,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    copyApplicationPackages(),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
