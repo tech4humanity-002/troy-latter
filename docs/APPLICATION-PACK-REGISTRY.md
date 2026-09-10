@@ -4,6 +4,18 @@ This document is the source-of-truth map for the standalone job-application micr
 
 The critical rule is isolation: application packages are static directories served alongside the main Troy Latter React site. Do not replace or restructure the `/` route to accommodate an application package.
 
+## Non-negotiable package discovery rule
+
+**An application package is NOT defined by the CV and cover letter.**
+
+Those are only the standard primary documents. An application may contain additional pages, evidence, tools, matrices, infographics, case studies, role-specific analyses, manifests, validators or other supporting material.
+
+**Before changing, deploying, routing or declaring an application package complete, inspect the entire application directory and its links. Do not stop after finding `cv.html` and `cover-letter.html`.**
+
+If additional pages exist, they are part of the package and must be preserved, copied into the production build, routed correctly and included in the route test set.
+
+EY-Parthenon is the canonical example of this rule. Its live package contains the landing page, CV, cover letter, strategy matrix and infographic, plus a build manifest. The fact that the CV and cover letter are the primary application documents does not make the other pages optional.
+
 ## Deployment architecture
 
 ```text
@@ -35,12 +47,6 @@ Every application landing page uses this primary order:
 The landing page may expose additional application-specific evidence in the body, such as a strategy matrix or infographic. Those are secondary evidence, not replacements for the three primary navigation destinations.
 
 Footer navigation follows the same priority.
-
-**Important: an application package is not limited to CV + cover letter.**
-
-A package may contain additional pages, tools, evidence, matrices, infographics, case studies, role-specific analyses, validators, or other material that materially strengthens the application. The registry must document every live page rather than assuming a fixed three-file pattern.
-
-When adding or discovering an application package, inspect the complete directory and record all HTML, JSON, assets and supporting files that are part of the live experience. Do not stop after finding `cv.html` and `cover-letter.html`.
 
 ## Application registry
 
@@ -122,17 +128,23 @@ Infosys/Snr_Principal_Architect_AI (CV).html
 
 ### EY-Parthenon
 
-**Public path**
+**Canonical public path**
 
 ```text
 /ey-parthenon/
 ```
 
-Use this exact lowercase path. Do not create a second `EY-Parthenon/` directory merely to change capitalisation. Git and deployment paths must remain canonical and unambiguous.
+**Known live deployment**
+
+```text
+https://troy-latter-yf4x-git-main-holo-org.vercel.app/ey-parthenon/
+```
+
+Use the exact lowercase repository/deployment path `/ey-parthenon/`. Do not create a second `EY-Parthenon/` directory merely to change capitalisation. Git and deployment paths must remain canonical and unambiguous.
 
 **Files and live pages**
 
-The EY-Parthenon package is an example of an **extended application package**. It contains more than the standard CV and cover letter and must be treated as such in future work:
+The EY-Parthenon package is an **extended application package**. It contains substantially more than the standard CV and cover letter and must be treated as a complete application experience in future work:
 
 ```text
 ey-parthenon/index.html
@@ -180,19 +192,24 @@ The landing page may therefore contain more than three destinations. The rule is
 - Strategy, commercial growth, transformation and CDD evidence are presented as the application narrative.
 - Do not replace this with the LAB3 or Infosys visual language.
 
-**Example rule for future applications**
+**Required discovery pattern for every future application**
 
-EY-Parthenon demonstrates the expected discovery pattern:
+EY-Parthenon demonstrates the expected pattern:
 
-1. Inspect the whole application directory.
+1. Inspect the whole application directory before making changes.
 2. Identify the landing page.
-3. Identify primary documents.
-4. Identify all additional evidence pages.
+3. Identify the primary documents.
+4. Identify **all** additional HTML/evidence pages.
 5. Identify manifests, validators and supporting assets.
-6. Preserve those pages in the build and routing configuration.
-7. Document every live route in this registry.
+6. Follow the landing-page links and inspect referenced files.
+7. Preserve every live/referenced page in the production build.
+8. Add every live route to the registry and route test set.
+9. Verify the deployment, not just the GitHub source.
+10. Only then declare the application package complete.
 
-Do not infer that a package is complete because `cv.html` and `cover-letter.html` exist.
+**Do not infer completeness from `cv.html` and `cover-letter.html`.**
+
+This rule exists specifically to prevent a future build/deployment task from stopping because a specification happens to mention only the CV and cover letter. The package directory and live links are authoritative for package scope.
 
 **Known failure and fix**
 
@@ -221,7 +238,7 @@ Do not apply one company's colours, typography or navigation styling to another 
 
 ### 4. Preserve the complete package
 
-Do not delete or omit an application-specific page simply because it is not one of the three primary destinations. Extra evidence is part of the application when it is linked by the landing page or included in the package manifest.
+Do not delete, omit or overwrite an application-specific page simply because it is not one of the three primary destinations. Extra evidence is part of the application when it exists in the package, is linked by the landing page or is included in the package manifest.
 
 ### 5. Make the smallest safe change
 
@@ -230,6 +247,10 @@ For navigation or wording fixes, change the affected application file only. For 
 ### 6. Verify source and deployment separately
 
 A GitHub file existing does not prove that Vercel serves it. A Vercel 200 response does not prove it serves the intended file. Both source and deployment must be checked.
+
+### 7. Inspect before replacing
+
+Never regenerate an application package from a reduced specification without first inspecting the existing directory. Existing pages and assets are requirements even when they were not listed in the latest task description.
 
 ## Required route test set
 
@@ -271,6 +292,7 @@ For each route verify:
 - Preserved the React root site and existing LAB3/Infosys package paths.
 - Confirmed EY-Parthenon files exist in the canonical repository under `ey-parthenon/`.
 - Added an explicit extended-package rule using EY-Parthenon as the example so future application builds do not stop after CV + cover letter.
+- Added the known live EY-Parthenon deployment path to the package record.
 
 ## Recovery principle
 
@@ -278,9 +300,10 @@ If a future application disappears from Vercel, first compare:
 
 1. GitHub directory exists.
 2. Complete directory contents have been inventoried.
-3. `vite.config.ts` copies that directory.
-4. `vercel.json` does not catch the child route with the root rewrite.
-5. Vercel deployment uses the latest `main` commit.
-6. Every live child URL is tested, including secondary evidence pages.
+3. Landing-page links have been followed and referenced pages identified.
+4. `vite.config.ts` copies that directory.
+5. `vercel.json` does not catch the child route with the root rewrite.
+6. Vercel deployment uses the latest `main` commit.
+7. Every live child URL is tested, including secondary evidence pages.
 
 Do not rebuild or replace the main site as a workaround.
