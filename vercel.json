@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/infosys",
+      "destination": "/Infosys/",
+      "permanent": false
+    },
+    {
+      "source": "/infosys/",
+      "destination": "/Infosys/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/snowflake",
