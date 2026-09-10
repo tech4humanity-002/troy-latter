@@ -36,6 +36,12 @@ The landing page may expose additional application-specific evidence in the body
 
 Footer navigation follows the same priority.
 
+**Important: an application package is not limited to CV + cover letter.**
+
+A package may contain additional pages, tools, evidence, matrices, infographics, case studies, role-specific analyses, validators, or other material that materially strengthens the application. The registry must document every live page rather than assuming a fixed three-file pattern.
+
+When adding or discovering an application package, inspect the complete directory and record all HTML, JSON, assets and supporting files that are part of the live experience. Do not stop after finding `cv.html` and `cover-letter.html`.
+
 ## Application registry
 
 ### LAB3
@@ -124,15 +130,28 @@ Infosys/Snr_Principal_Architect_AI (CV).html
 
 Use this exact lowercase path. Do not create a second `EY-Parthenon/` directory merely to change capitalisation. Git and deployment paths must remain canonical and unambiguous.
 
-**Files**
+**Files and live pages**
+
+The EY-Parthenon package is an example of an **extended application package**. It contains more than the standard CV and cover letter and must be treated as such in future work:
 
 ```text
 ey-parthenon/index.html
+    -> application landing page
+
 ey-parthenon/cover-letter.html
+    -> primary application document
+
 ey-parthenon/cv.html
+    -> executive CV
+
 ey-parthenon/strategy-matrix.html
+    -> secondary strategy / role-alignment evidence
+
 ey-parthenon/infographic.html
+    -> secondary visual application evidence
+
 ey-parthenon/build-manifest.json
+    -> package manifest / validation metadata
 ```
 
 **Primary links**
@@ -150,6 +169,8 @@ ey-parthenon/build-manifest.json
 /ey-parthenon/infographic.html
 ```
 
+The landing page may therefore contain more than three destinations. The rule is that the three primary destinations remain obvious, while additional evidence is preserved and documented rather than deleted, hidden or treated as an error.
+
 **Design system**
 
 - EY-Parthenon-inspired black, navy and yellow treatment.
@@ -158,6 +179,20 @@ ey-parthenon/build-manifest.json
 - Serif display headings combined with restrained enterprise sans-serif body text.
 - Strategy, commercial growth, transformation and CDD evidence are presented as the application narrative.
 - Do not replace this with the LAB3 or Infosys visual language.
+
+**Example rule for future applications**
+
+EY-Parthenon demonstrates the expected discovery pattern:
+
+1. Inspect the whole application directory.
+2. Identify the landing page.
+3. Identify primary documents.
+4. Identify all additional evidence pages.
+5. Identify manifests, validators and supporting assets.
+6. Preserve those pages in the build and routing configuration.
+7. Document every live route in this registry.
+
+Do not infer that a package is complete because `cv.html` and `cover-letter.html` exist.
 
 **Known failure and fix**
 
@@ -168,6 +203,7 @@ The following protections are now in place:
 - `vite.config.ts` copies `ey-parthenon` alongside `LAB3` and `Infosys`.
 - `vercel.json` has an EY-Parthenon child-route rule before the root `/(.*)` catch-all.
 - The EY-Parthenon landing navigation has been standardised to Cover Letter, Executive CV, Main site.
+- The complete EY-Parthenon page set is explicitly documented above so future changes do not stop at CV + cover letter.
 
 ## Safe-change rules
 
@@ -183,17 +219,21 @@ The directory name is part of the public URL contract. Before renaming a package
 
 Do not apply one company's colours, typography or navigation styling to another company's application. Each package is a deliberately separate visual system.
 
-### 4. Make the smallest safe change
+### 4. Preserve the complete package
+
+Do not delete or omit an application-specific page simply because it is not one of the three primary destinations. Extra evidence is part of the application when it is linked by the landing page or included in the package manifest.
+
+### 5. Make the smallest safe change
 
 For navigation or wording fixes, change the affected application file only. For deployment fixes, change only the build/routing configuration required to serve the existing files.
 
-### 5. Verify source and deployment separately
+### 6. Verify source and deployment separately
 
 A GitHub file existing does not prove that Vercel serves it. A Vercel 200 response does not prove it serves the intended file. Both source and deployment must be checked.
 
 ## Required route test set
 
-After any build or routing change, test:
+After any build or routing change, test the complete package, not just its CV and cover letter:
 
 ```text
 /
@@ -210,6 +250,8 @@ After any build or routing change, test:
 /ey-parthenon/infographic.html
 ```
 
+If a package has additional live pages, add them to this test set immediately. Do not rely on the three-file baseline.
+
 For each route verify:
 
 - HTTP response is successful.
@@ -218,6 +260,7 @@ For each route verify:
 - Main site returns to `/`.
 - No application route is rewritten to the React home page.
 - Company-specific visual treatment is intact.
+- All package-specific evidence pages remain reachable.
 
 ## Change record - 11 September 2026
 
@@ -227,15 +270,17 @@ For each route verify:
 - Added EY-Parthenon child-route handling before the root Vercel catch-all.
 - Preserved the React root site and existing LAB3/Infosys package paths.
 - Confirmed EY-Parthenon files exist in the canonical repository under `ey-parthenon/`.
+- Added an explicit extended-package rule using EY-Parthenon as the example so future application builds do not stop after CV + cover letter.
 
 ## Recovery principle
 
 If a future application disappears from Vercel, first compare:
 
 1. GitHub directory exists.
-2. `vite.config.ts` copies that directory.
-3. `vercel.json` does not catch the child route with the root rewrite.
-4. Vercel deployment uses the latest `main` commit.
-5. Direct child URLs are tested.
+2. Complete directory contents have been inventoried.
+3. `vite.config.ts` copies that directory.
+4. `vercel.json` does not catch the child route with the root rewrite.
+5. Vercel deployment uses the latest `main` commit.
+6. Every live child URL is tested, including secondary evidence pages.
 
 Do not rebuild or replace the main site as a workaround.
