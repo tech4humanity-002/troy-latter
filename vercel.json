@@ -28,6 +28,10 @@
       "destination": "/ey-parthenon/index.html"
     },
     {
+      "source": "/ey-parthenon/(.*)",
+      "destination": "/ey-parthenon/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
