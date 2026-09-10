@@ -1,6 +1,6 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "cleanUrls": false,
+  "trailingSlash": true,
   "redirects": [
     {
       "source": "/infosys",
@@ -11,9 +11,27 @@
       "source": "/infosys/",
       "destination": "/Infosys/",
       "permanent": false
+    },
+    {
+      "source": "/LAB3",
+      "destination": "/LAB3/",
+      "permanent": false
+    },
+    {
+      "source": "/Infosys",
+      "destination": "/Infosys/",
+      "permanent": false
     }
   ],
   "rewrites": [
+    {
+      "source": "/LAB3/",
+      "destination": "/LAB3/index.html"
+    },
+    {
+      "source": "/Infosys/",
+      "destination": "/Infosys/index.html"
+    },
     {
       "source": "/snowflake",
       "destination": "/snowflake/index.html"
