@@ -18,6 +18,7 @@ troy-latter.vercel.app/
         |
         +-- /Infosys/
               +-- index.html
+              +-- cv.html                         <- stable CV route
               +-- Snr_Principal_Architect_AI (CV).html
               +-- cover-letter.html
 ```
@@ -85,9 +86,12 @@ Also test the important application assets/pages:
 ```text
 /LAB3/cv.html
 /LAB3/cover-letter.html
+/Infosys/cv.html
 /Infosys/Snr_Principal_Architect_AI%20(CV).html
 /Infosys/cover-letter.html
 ```
+
+`/Infosys/cv.html` is the stable public route. It redirects to the actual CV filename so callers do not need to know the long filename containing spaces and parentheses.
 
 Record HTTP status and whether the page renders correctly. A URL returning 200 is not sufficient if it renders the wrong application.
 
@@ -132,6 +136,7 @@ Before declaring a change complete:
 - [ ] `/` loads the real Troy Latter React site.
 - [ ] `/LAB3/` loads the LAB3 application page.
 - [ ] `/Infosys/` loads the Infosys application page.
+- [ ] `/Infosys/cv.html` loads/redirects to the CV.
 - [ ] CV links work.
 - [ ] Cover-letter links work.
 - [ ] Main-site navigation works from both application pages.
@@ -155,6 +160,8 @@ No receipt = not REAL.
 Do not create a new application selector at `/` just because application pages are difficult to route. The correct solution is to preserve the existing React root and copy/serve `LAB3/` and `Infosys/` as static directories from the same build.
 
 Do not claim that two Vercel projects are equivalent because both deploy the same repository. Their project ownership, domains, deployment commit and production status still need to be checked.
+
+Do not link to `/Infosys/cv.html` unless that file exists in GitHub. The stable alias is now explicitly maintained.
 
 ## Next-time procedure
 
