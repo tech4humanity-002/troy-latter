@@ -16,22 +16,9 @@
       "source": "/LAB3",
       "destination": "/LAB3/",
       "permanent": false
-    },
-    {
-      "source": "/Infosys",
-      "destination": "/Infosys/",
-      "permanent": false
     }
   ],
   "rewrites": [
-    {
-      "source": "/LAB3/",
-      "destination": "/LAB3/index.html"
-    },
-    {
-      "source": "/Infosys/",
-      "destination": "/Infosys/index.html"
-    },
     {
       "source": "/snowflake",
       "destination": "/snowflake/index.html"
@@ -39,6 +26,10 @@
     {
       "source": "/ey-parthenon",
       "destination": "/ey-parthenon/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
