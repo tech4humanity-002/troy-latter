@@ -18,6 +18,16 @@
       "permanent": false
     },
     {
+      "source": "/tcs",
+      "destination": "/TCS/",
+      "permanent": false
+    },
+    {
+      "source": "/tcs/",
+      "destination": "/TCS/",
+      "permanent": false
+    },
+    {
       "source": "/EY-Parthenon",
       "destination": "/ey-parthenon/",
       "permanent": false
