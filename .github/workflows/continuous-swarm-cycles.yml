@@ -16,17 +16,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Run five durable cycles
+      - name: Run five verified durable cycles
         shell: bash
         run: |
           set -euo pipefail
           url="https://pflisxkcxbzboxwidywf.supabase.co/functions/v1/t4h-world-continuous-cycle"
-          for cycle in 1 2 3 4 5; do
-            echo "=== CONTINUOUS CYCLE ${cycle}/5 ==="
+          successful=0
+          attempts=0
+          while [ "$successful" -lt 5 ] && [ "$attempts" -lt 12 ]; do
+            attempts=$((attempts + 1))
+            echo "=== ATTEMPT ${attempts} | VERIFIED ${successful}/5 ==="
             response=$(curl --fail-with-body --silent --show-error --max-time 180 "$url")
             echo "$response"
-            echo "$response" | grep -q '"status":"REAL"'
+            if echo "$response" | grep -q '"status":"REAL"'; then
+              successful=$((successful + 1))
+              echo "VERIFIED REAL CYCLE ${successful}/5"
+            else
+              echo "Cycle not verified. Retrying without counting it."
+            fi
             sleep 5
           done
-          echo "=== FIVE CYCLES COMPLETE ==="
-          echo "Next scheduled invocation replenishes and starts the next batch."
+          test "$successful" -eq 5
+          echo "=== FIVE VERIFIED CYCLES COMPLETE ==="
+          echo "The scheduled workflow replenishes and starts the next batch continuously."
