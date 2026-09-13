@@ -1,0 +1,32 @@
+name: Continuous Swarm Cycles
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: continuous-swarm-cycles
+  cancel-in-progress: false
+
+jobs:
+  five-cycles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Run five durable cycles
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://pflisxkcxbzboxwidywf.supabase.co/functions/v1/t4h-world-continuous-cycle"
+          for cycle in 1 2 3 4 5; do
+            echo "=== CONTINUOUS CYCLE ${cycle}/5 ==="
+            response=$(curl --fail-with-body --silent --show-error --max-time 180 "$url")
+            echo "$response"
+            echo "$response" | grep -q '"status":"REAL"'
+            sleep 5
+          done
+          echo "=== FIVE CYCLES COMPLETE ==="
+          echo "Next scheduled invocation replenishes and starts the next batch."
