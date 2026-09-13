@@ -19,16 +19,17 @@ jobs:
       - name: Run five verified durable cycles
         shell: bash
         run: |
-          set -euo pipefail
+          set -u
           url="https://pflisxkcxbzboxwidywf.supabase.co/functions/v1/t4h-world-continuous-cycle"
           successful=0
           attempts=0
-          while [ "$successful" -lt 5 ] && [ "$attempts" -lt 12 ]; do
+          while [ "$successful" -lt 5 ] && [ "$attempts" -lt 20 ]; do
             attempts=$((attempts + 1))
             echo "=== ATTEMPT ${attempts} | VERIFIED ${successful}/5 ==="
-            response=$(curl --fail-with-body --silent --show-error --max-time 180 "$url")
+            response=$(curl --silent --show-error --max-time 180 --write-out '\nHTTP_STATUS:%{http_code}' "$url" || true)
             echo "$response"
-            if echo "$response" | grep -q '"status":"REAL"'; then
+            body="${response%HTTP_STATUS:*}"
+            if echo "$body" | grep -q '"status":"REAL"'; then
               successful=$((successful + 1))
               echo "VERIFIED REAL CYCLE ${successful}/5"
             else
@@ -36,6 +37,9 @@ jobs:
             fi
             sleep 5
           done
-          test "$successful" -eq 5
+          if [ "$successful" -ne 5 ]; then
+            echo "FIVE VERIFIED CYCLES NOT REACHED"
+            exit 1
+          fi
           echo "=== FIVE VERIFIED CYCLES COMPLETE ==="
           echo "The scheduled workflow replenishes and starts the next batch continuously."
