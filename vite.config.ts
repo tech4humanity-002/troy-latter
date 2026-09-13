@@ -7,7 +7,7 @@ import { componentTagger } from "lovable-tagger";
 const copyApplicationPackages = () => ({
   name: "copy-application-packages",
   closeBundle() {
-    for (const name of ["LAB3", "Infosys", "ey-parthenon"]) {
+    for (const name of ["LAB3", "Infosys", "TCS", "ey-parthenon"]) {
       fs.cpSync(path.resolve(__dirname, name), path.resolve(__dirname, "dist", name), { recursive: true });
     }
   },
