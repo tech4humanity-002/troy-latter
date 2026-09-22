@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { generatedCvRoutes } from "./generated/cvRoutes";
+import GeneratedCVIndexPage from "./generated/GeneratedCVIndexPage";
 import { Layout } from "./components/Layout";
 import { RouteNormalizer } from "./components/RouteNormalizer";
 import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
@@ -80,6 +81,7 @@ const App = () => (
           <RouteNormalizer />
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading…</div>}>
           <Routes>
+            <Route path="/cv/" element={<GeneratedCVIndexPage />} />
             {generatedCvRoutes.map(({ slug, Component }) => (
               <Route
                 key={slug}
