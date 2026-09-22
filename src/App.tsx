@@ -3,69 +3,70 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { Layout } from "./components/Layout";
 import { RouteNormalizer } from "./components/RouteNormalizer";
 import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
 import { MicrositeGuard } from "./components/MicrositeGuard";
 
-import Index from "./pages/Index";
-import ExecutiveProfile from "./pages/ExecutiveProfile";
-import CoreCompetencies from "./pages/CoreCompetencies";
-import IndustryExpertise from "./pages/IndustryExpertise";
-import Contact from "./pages/Contact";
-import FAQs from "./pages/FAQs";
-import NotFound from "./pages/NotFound";
-import Whitepapers from "./pages/Whitepapers";
-import Projects from "./pages/Projects";
-import ExperienceAndImpact from "./pages/ExperienceAndImpact";
-import AIEthics from "./pages/AIEthics";
-import CVGenerator from "./pages/tools/CVGenerator";
-import CVGenerationHistory from "./pages/tools/CVGenerationHistory";
-import CVIngestionDashboard from "./pages/tools/CVIngestionDashboard";
-import SkillsVisualizations from "./pages/tools/SkillsVisualizations";
+const Index = lazy(() => import("./pages/Index"));
+const ExecutiveProfile = lazy(() => import("./pages/ExecutiveProfile"));
+const CoreCompetencies = lazy(() => import("./pages/CoreCompetencies"));
+const IndustryExpertise = lazy(() => import("./pages/IndustryExpertise"));
+const Contact = lazy(() => import("./pages/Contact"));
+const FAQs = lazy(() => import("./pages/FAQs"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Whitepapers = lazy(() => import("./pages/Whitepapers"));
+const Projects = lazy(() => import("./pages/Projects"));
+const ExperienceAndImpact = lazy(() => import("./pages/ExperienceAndImpact"));
+const AIEthics = lazy(() => import("./pages/AIEthics"));
+const CVGenerator = lazy(() => import("./pages/tools/CVGenerator"));
+const CVGenerationHistory = lazy(() => import("./pages/tools/CVGenerationHistory"));
+const CVIngestionDashboard = lazy(() => import("./pages/tools/CVIngestionDashboard"));
+const SkillsVisualizations = lazy(() => import("./pages/tools/SkillsVisualizations"));
 
 // Microsite pages
-import MicrositeIndex from "./pages/microsites/MicrositeIndex";
-import InterviewPrepIndex from "./pages/microsites/interview-prep/Index";
-import AgentforceIndex from "./pages/microsites/agentforce/Index";
-import Lab3Index from "./pages/microsites/lab3/Index";
-import PegaIndex from "./pages/microsites/pega/Index";
-import EnvatoIndex from "./pages/microsites/envato/Index";
-import OrchestratePage from "./pages/microsites/envato/Orchestrator";
-import EnvatoSummary from "./pages/microsites/envato/Summary";
-import EnvatoAssets from "./pages/microsites/envato/Assets";
-import LenovoIndex from "./pages/microsites/lenovo/Index";
-import LenovoFocusImages from "./pages/microsites/lenovo/FocusImages";
-import LenovoTechnicalStack from "./pages/microsites/lenovo/TechnicalStack";
-import LenovoDemoChoices from "./pages/microsites/lenovo/DemoChoices";
-import LenovoTruScaleScenarios from "./pages/microsites/lenovo/TruScaleScenarios";
-import WnsIndex from "./pages/microsites/wns/Index";
-import AtlassianIndex from "./pages/microsites/atlassian/Index";
-import AdobeIndex from "./pages/microsites/adobe/Index";
+const MicrositeIndex = lazy(() => import("./pages/microsites/MicrositeIndex"));
+const InterviewPrepIndex = lazy(() => import("./pages/microsites/interview-prep/Index"));
+const AgentforceIndex = lazy(() => import("./pages/microsites/agentforce/Index"));
+const Lab3Index = lazy(() => import("./pages/microsites/lab3/Index"));
+const PegaIndex = lazy(() => import("./pages/microsites/pega/Index"));
+const EnvatoIndex = lazy(() => import("./pages/microsites/envato/Index"));
+const OrchestratePage = lazy(() => import("./pages/microsites/envato/Orchestrator"));
+const EnvatoSummary = lazy(() => import("./pages/microsites/envato/Summary"));
+const EnvatoAssets = lazy(() => import("./pages/microsites/envato/Assets"));
+const LenovoIndex = lazy(() => import("./pages/microsites/lenovo/Index"));
+const LenovoFocusImages = lazy(() => import("./pages/microsites/lenovo/FocusImages"));
+const LenovoTechnicalStack = lazy(() => import("./pages/microsites/lenovo/TechnicalStack"));
+const LenovoDemoChoices = lazy(() => import("./pages/microsites/lenovo/DemoChoices"));
+const LenovoTruScaleScenarios = lazy(() => import("./pages/microsites/lenovo/TruScaleScenarios"));
+const WnsIndex = lazy(() => import("./pages/microsites/wns/Index"));
+const AtlassianIndex = lazy(() => import("./pages/microsites/atlassian/Index"));
+const AdobeIndex = lazy(() => import("./pages/microsites/adobe/Index"));
 
 // Application Kit pages
-import HashiCorpKit from "./pages/kits/HashiCorpKit";
-import ActGovKit from "./pages/kits/ActGovKit";
-import AnthropicKit from "./pages/kits/AnthropicKit";
-import KitsIndex from "./pages/kits/KitsIndex";
+const HashiCorpKit = lazy(() => import("./pages/kits/HashiCorpKit"));
+const ActGovKit = lazy(() => import("./pages/kits/ActGovKit"));
+const AnthropicKit = lazy(() => import("./pages/kits/AnthropicKit"));
+const KitsIndex = lazy(() => import("./pages/kits/KitsIndex"));
 
 // Legacy pages that are still accessible but redirected
-import InnovationDefinition from "./pages/InnovationDefinition";
-import InnovationJourney from "./pages/InnovationJourney";
-import InnovationFrameworks from "./pages/InnovationFrameworks";
-import LeadershipStyle from "./pages/LeadershipStyle";
-import PeopleInvolved from "./pages/PeopleInvolved";
-import UpcomingProjects from "./pages/UpcomingProjects";
-import StrategicProjects from "./pages/StrategicProjects";
-import CustomerAsksStars from "./pages/CustomerAsksStars";
-import OpportunityStars from "./pages/OpportunityStars";
-import Responsibilities from "./pages/Responsibilities";
-import You from "./pages/You";
-import YourProfileStars from "./pages/YourProfileStars";
-import TheOpportunity from "./pages/TheOpportunity";
-import YourPitch from "./pages/YourPitch";
-import WhatIsInnovation from "./pages/WhatIsInnovation";
-import { SmokeTest } from "./pages/dev/SmokeTest";
+const InnovationDefinition = lazy(() => import("./pages/InnovationDefinition"));
+const InnovationJourney = lazy(() => import("./pages/InnovationJourney"));
+const InnovationFrameworks = lazy(() => import("./pages/InnovationFrameworks"));
+const LeadershipStyle = lazy(() => import("./pages/LeadershipStyle"));
+const PeopleInvolved = lazy(() => import("./pages/PeopleInvolved"));
+const UpcomingProjects = lazy(() => import("./pages/UpcomingProjects"));
+const StrategicProjects = lazy(() => import("./pages/StrategicProjects"));
+const CustomerAsksStars = lazy(() => import("./pages/CustomerAsksStars"));
+const OpportunityStars = lazy(() => import("./pages/OpportunityStars"));
+const Responsibilities = lazy(() => import("./pages/Responsibilities"));
+const You = lazy(() => import("./pages/You"));
+const YourProfileStars = lazy(() => import("./pages/YourProfileStars"));
+const TheOpportunity = lazy(() => import("./pages/TheOpportunity"));
+const YourPitch = lazy(() => import("./pages/YourPitch"));
+const WhatIsInnovation = lazy(() => import("./pages/WhatIsInnovation"));
+const SmokeTest = lazy(() => import("./pages/dev/SmokeTest").then(m => ({ default: m.SmokeTest })));
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <RouteNormalizer />
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading…</div>}>
           <Routes>
           {/* Main site routes with main layout */}
           <Route path="/" element={<Layout><Index /></Layout>} />
@@ -162,6 +164,7 @@ const App = () => (
            
            <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

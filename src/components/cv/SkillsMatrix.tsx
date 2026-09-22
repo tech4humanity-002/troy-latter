@@ -20,9 +20,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { toast } from "sonner";
-import { jsPDF } from "jspdf";
-import autoTable from "jspdf-autotable";
-import { saveAs } from "file-saver";
 
 interface Skill {
   skill: string;
@@ -117,6 +114,11 @@ export function SkillsMatrix() {
   const exportSkills = async (format: "pdf" | "html" | "csv") => {
     try {
       if (format === "pdf") {
+        const [{ jsPDF }, { default: autoTable }, { saveAs }] = await Promise.all([
+          import("jspdf"),
+          import("jspdf-autotable"),
+          import("file-saver")
+        ]);
         const doc = new jsPDF({
           format: "a4",
           orientation: "landscape",

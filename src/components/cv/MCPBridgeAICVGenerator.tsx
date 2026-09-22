@@ -19,7 +19,6 @@ import { Badge } from "@/components/ui/badge";
 import { Loader2, Sparkles, Briefcase, UserCheck, Zap, BarChart3, Download, Save, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { SkillsAnalysis } from "./SkillsAnalysis";
-import { generateProfessionalPDF } from "@/utils/pdfGenerator";
 import { supabase } from "@/integrations/supabase/client";
 
 export function MCPBridgeAICVGenerator() {
