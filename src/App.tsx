@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { generatedCvRoutes } from "./generated/cvRoutes";
 import { Layout } from "./components/Layout";
 import { RouteNormalizer } from "./components/RouteNormalizer";
 import { MicrositeLayout } from "./components/microsites/MicrositeLayout";
@@ -79,6 +80,14 @@ const App = () => (
           <RouteNormalizer />
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading…</div>}>
           <Routes>
+            {generatedCvRoutes.map(({ slug, Component }) => (
+              <Route
+                key={slug}
+                path={\`/cv/${slug}/\`}
+                element={<Component slug={slug} />}
+              />
+            ))}
+
           {/* Main site routes with main layout */}
           <Route path="/" element={<Layout><Index /></Layout>} />
           <Route path="/executive-profile" element={<Layout><ExecutiveProfile /></Layout>} />

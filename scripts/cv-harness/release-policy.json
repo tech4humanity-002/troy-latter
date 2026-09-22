@@ -1,0 +1,13 @@
+{
+  "bundle": {
+    "maxEntryKb": 250,
+    "maxChunkKb": 500
+  },
+  "routes": [
+    "/",
+    "/executive-profile/",
+    "/tools/cv-generator/",
+    "/microsites/lenovo/",
+    "/good-things/"
+  ]
+}
