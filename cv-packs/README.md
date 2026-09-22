@@ -1,28 +1,58 @@
-# CV Packs
+# CV pack harness
 
-Drop one Word, PDF, Markdown or text source into its own folder:
+Drop application material into a folder under `cv-packs/`. No code or route changes are required.
 
-    cv-packs/my-new-role/source.docx
+## Zero-touch convention
 
-Optional `manifest.json`:
+Use any role/application slug as the folder name:
 
-    {
-      "title": "Principal Consultant - Example",
-      "type": "cv",
-      "description": "Tailored CV and application pack"
-    }
+```
+cv-packs/
+  wns-lead-technical-consultant/
+    cv.docx
+    cover-letter.docx
+    skills-matrix.pdf
+```
 
-Supported `type` values are intentionally open:
+Supported source formats: `.docx`, `.pdf`, `.txt`, `.md`.
 
-- `cv`
-- `cv-cover`
-- `skills-matrix`
-- `application`
-- `portfolio`
-- any future template type
+The harness automatically classifies filenames:
 
-Once the folder exists, the normal production build discovers it automatically and creates:
+- `cv`, `resume`, `curriculum` → CV
+- `cover-letter`, `coverletter`, `cover` → Cover Letter
+- `skills-matrix`, `skills-profile`, `skills` → Skills Matrix
+- `application`, `response`, `selection-criteria` → Application
+- `portfolio`, `case-study` → Portfolio
+- anything else → Document
 
-    /cv/my-new-role/
+Optional `manifest.json` can override the title, description, role, company and individual artifact types.
 
-No App.tsx route editing is required.
+```json
+{
+  "title": "WNS Lead Technical Consultant",
+  "role": "Lead Technical Consultant",
+  "company": "WNS",
+  "description": "Application pack",
+  "artifacts": {
+    "cv.docx": { "type": "cv", "title": "Targeted CV" }
+  }
+}
+```
+
+## Generated destinations
+
+Every folder gets:
+
+- its own page: `/cv/<slug>/`
+- an automatic card on: `/cv/`
+- extracted machine-readable content at `/cv-packs/<slug>/content.json`
+- downloadable copies of the original source files
+
+Run:
+
+```bash
+npm run cv:packs
+npm run build
+```
+
+The release harness runs CV discovery automatically, so normal releases do not require a separate CV publishing step.
