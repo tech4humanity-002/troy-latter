@@ -1,94 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Troy Latter — Good Things Australia Board Candidature</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troy Latter | Good Things Australia Board Candidature</title>
 <style>
-:root{
---bg:#0b1220;
---card:#111827;
---muted:#94a3b8;
---text:#e5e7eb;
---accent:#60a5fa;
---accent-2:#34d399;
---border:#1f2937;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',sans-serif;line-height:1.6}
-.container{max-width:980px;margin:0 auto;padding:24px}
-header{padding:48px 0 24px}
-h1{font-size:28px;margin:0 0 8px;line-height:1.2}
-h2{font-size:18px;color:var(--muted);margin:0 0 24px;font-weight:500}
-.intro{background:linear-gradient(135deg,#1e293b,#0f172a);border:1px solid var(--border);border-radius:12px;padding:20px 20px 16px;margin-bottom:24px}
-.intro p{margin:0 0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;transition:transform .15s ease,box-shadow .15s ease}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
-.card h3{margin:0 0 8px;font-size:16px}
-.card p{margin:0 0 14px;color:var(--muted);font-size:14px}
-.btn{display:inline-block;background:var(--accent);color:#0b1220;padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
-.btn:hover{background:#93c5fd}
-.meta{margin-top:16px;font-size:13px;color:var(--muted)}
-footer{margin-top:32px;border-top:1px solid var(--border);padding-top:16px;font-size:13px;color:var(--muted)}
-.badge{display:inline-block;background:#1e293b;border:1px solid var(--border);border-radius:999px;padding:4px 10px;font-size:12px;color:#cbd5e1;margin-bottom:10px}
+:root{--ink:#172033;--muted:#667085;--blue:#2457d6;--blue2:#eaf0ff;--green:#087f5b;--green2:#e8f7f1;--line:#dfe4ec;--paper:#fff;--bg:#f5f7fb;--shadow:0 18px 50px rgba(23,32,51,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#eef3ff 0,#f8fafc 38%,#f5f7fb 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 24px}
+.topbar{padding:22px 0;border-bottom:1px solid rgba(223,228,236,.8);background:rgba(255,255,255,.82);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:800;letter-spacing:-.02em}.brand span{color:var(--blue)}.toplink{font-size:14px;color:var(--muted);text-decoration:none}.toplink:hover{color:var(--blue)}
+.hero{padding:76px 0 58px}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:end}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--green2);color:var(--green);border:1px solid #ccebdd;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-.055em;margin:20px 0 18px;max-width:850px}.lead{font-size:21px;line-height:1.5;color:#445066;max-width:760px;margin:0}.hero-card{background:var(--ink);color:#fff;border-radius:24px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#2f6bff;opacity:.28;right:-70px;top:-70px}.hero-card h2{font-size:17px;margin:0 0 14px}.hero-card p{color:#cbd3e1;margin:0;position:relative;z-index:1}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border-radius:12px;text-decoration:none;font-weight:750;font-size:14px;border:1px solid transparent}.primary{background:var(--blue);color:#fff}.primary:hover{background:#1947b8}.secondary{background:#fff;color:var(--ink);border-color:var(--line)}.secondary:hover{border-color:#b9c4d8}
+.section{padding:24px 0 72px}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}.section h2{font-size:30px;letter-spacing:-.03em;margin:0}.section-intro{color:var(--muted);max-width:700px;margin:5px 0 0}.journey{display:flex;align-items:stretch;gap:0;margin-top:28px;overflow-x:auto;padding:8px 4px 20px}.stage{position:relative;flex:1;min-width:150px;background:var(--paper);border:1px solid var(--line);padding:20px 18px 22px;box-shadow:0 8px 28px rgba(23,32,51,.05);text-decoration:none;transition:transform .18s,border-color .18s,box-shadow .18s}.stage:first-child{border-radius:18px 0 0 18px}.stage:last-child{border-radius:0 18px 18px 0}.stage:hover{transform:translateY(-3px);border-color:#aebde0;box-shadow:0 14px 34px rgba(23,32,51,.10);z-index:2}.stage-number{font-size:12px;font-weight:900;color:var(--blue);letter-spacing:.08em}.stage-arrow{position:absolute;right:-15px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;z-index:3;box-shadow:0 5px 15px rgba(36,87,214,.28)}.stage:last-child .stage-arrow{display:none}.stage h3{font-size:15px;line-height:1.25;margin:9px 0 6px}.stage p{font-size:12px;line-height:1.4;color:var(--muted);margin:0}.journey-note{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin:2px 0 30px}.journey-note strong{color:var(--ink)}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.doc{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;display:grid;grid-template-columns:46px 1fr;gap:16px;box-shadow:0 8px 28px rgba(23,32,51,.05)}.doc-number{width:42px;height:42px;border-radius:12px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:900}.doc h3{margin:0 0 6px;font-size:18px}.doc p{margin:0;color:var(--muted);font-size:14px}.doc-actions{display:flex;align-items:center;gap:14px;margin-top:14px}.read{color:var(--blue);font-weight:800;text-decoration:none;font-size:13px}.pdf{color:var(--muted);font-size:12px;text-decoration:underline;text-underline-offset:3px}.callout{margin-top:20px;background:linear-gradient(135deg,#172033,#243c68);color:#fff;border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px}.callout h2{margin:0 0 8px;font-size:25px}.callout p{margin:0;color:#d7deea}.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0;padding:0;list-style:none}.principles li{border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:11px 13px;color:#e8edf5;font-size:13px;background:rgba(255,255,255,.05)}footer{padding:28px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media(max-width:820px){.hero-grid,.callout{grid-template-columns:1fr}.hero{padding-top:52px}.section-head{display:block}.docs{grid-template-columns:1fr}.journey{display:block;overflow:visible;padding:0}.stage{display:block;min-width:0;border-radius:0!important;margin:0 0 2px;padding:18px 48px 18px 18px}.stage:first-child{border-radius:18px 18px 0 0!important}.stage:last-child{border-radius:0 0 18px 18px!important}.stage-arrow{right:20px;top:auto;bottom:-15px;transform:none}.toplink{display:none}}
 </style>
 </head>
 <body>
-<div class="container">
-<header>
-<h1>Good Things Australia — Board Candidature</h1>
-<h2>Troy Latter | Independent Director | Strategy, People, Technology & Human Outcomes</h2>
-</header>
-
-<section class="intro">
-<span class="badge">Board candidature pack</span>
-<p>This site presents a compact board candidature pack for Good Things Australia. It is organised around board judgement, responsible technology, human capability, inclusion and measurable outcomes.</p>
-<p>The pack includes a board CV, board profile, capability matrix, board judgement scenarios, a Good Things–specific statement and a suggested application email.</p>
-</section>
-
-<h2 style="margin-top:28px">Documents</h2>
-<div class="grid">
-<div class="card">
-<h3>Board CV</h3>
-<p>Executive and governance-facing CV with evidence-bounded titles and claims.</p>
-<a class="btn" href="./Troy_Latter_Board_CV.pdf" target="_blank" rel="noopener">View PDF</a>
+<div class="topbar"><div class="wrap topbar-inner"><div class="brand">Troy Latter <span>/ Board Candidature</span></div><a class="toplink" href="#journey">View the six-step journey</a></div></div>
+<main>
+<section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">Good Things Australia</div><h1>Technology judgement in service of people.</h1><p class="lead">A board candidature focused on digital inclusion, responsible AI, human capability, community outcomes and the governance required to turn technology into lasting public value.</p><div class="actions"><a class="btn primary" href="#journey">Start the candidature</a><a class="btn secondary" href="Troy_Latter_Board_CV.html">Read 01: Board CV</a></div></div><aside class="hero-card"><h2>Read it as a journey</h2><p>Six HTML documents. One connected argument. Start with who Troy is, then move through what he brings, how he judges, why Good Things Australia matters and the application itself.</p></aside></div></section>
+<section class="section" id="journey"><div class="wrap"><div class="section-head"><div><h2>The six-step candidature journey</h2><p class="section-intro">Follow the numbered path. Each stage answers the next board-level question, with the HTML document as the primary reading experience.</p></div></div>
+<div class="journey" aria-label="Six-step candidature journey">
+<a class="stage" href="Troy_Latter_Board_CV.html"><span class="stage-number">01</span><h3>Who is he?</h3><p>Board CV</p><span class="stage-arrow">→</span></a>
+<a class="stage" href="Troy_Latter_Board_Profile.html"><span class="stage-number">02</span><h3>What does he bring?</h3><p>Board Profile</p><span class="stage-arrow">→</span></a>
+<a class="stage" href="Troy_Latter_Board_Capability_Matrix.html"><span class="stage-number">03</span><h3>How does it map?</h3><p>Capability Matrix</p><span class="stage-arrow">→</span></a>
+<a class="stage" href="Troy_Latter_Board_Judgement_in_Practice.html"><span class="stage-number">04</span><h3>How does he judge?</h3><p>Judgement in Practice</p><span class="stage-arrow">→</span></a>
+<a class="stage" href="Troy_Latter_Good_Things_Australia_Statement.html"><span class="stage-number">05</span><h3>Why Good Things?</h3><p>Good Things Australia Statement</p><span class="stage-arrow">→</span></a>
+<a class="stage" href="Troy_Latter_Good_Things_Application_Email.html"><span class="stage-number">06</span><h3>What next?</h3><p>Application Email</p></a>
 </div>
-<div class="card">
-<h3>Board Profile</h3>
-<p>Concise independent-director proposition and personal board philosophy.</p>
-<a class="btn" href="./Troy_Latter_Board_Profile.pdf" target="_blank" rel="noopener">View PDF</a>
+<div class="journey-note"><strong>01 → 06</strong><span>Start at the beginning and follow the arrows. PDFs are available as secondary downloads.</span></div>
+<div class="docs">
+<article class="doc"><div class="doc-number">01</div><div><h3>Board CV</h3><p>The executive and governance profile, experience, capabilities and relevant professional background.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Board_CV.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Board_CV.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
+<article class="doc"><div class="doc-number">02</div><div><h3>Board Profile</h3><p>The independent director proposition and the organising principle behind Troy's board contribution.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Board_Profile.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Board_Profile.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
+<article class="doc"><div class="doc-number">03</div><div><h3>Capability Matrix</h3><p>A practical view of strategy, people, commercial judgement, risk, technology, government and inclusion.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Board_Capability_Matrix.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Board_Capability_Matrix.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
+<article class="doc"><div class="doc-number">04</div><div><h3>Judgement in Practice</h3><p>Three boardroom scenarios showing how Troy approaches transformation, workforce change and strategic technology investment.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Board_Judgement_in_Practice.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Board_Judgement_in_Practice.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
+<article class="doc"><div class="doc-number">05</div><div><h3>Why Good Things Australia</h3><p>The organisation-specific case, connecting digital inclusion, AI literacy, safety and community empowerment to Troy's experience.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Good_Things_Australia_Statement.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Good_Things_Australia_Statement.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
+<article class="doc"><div class="doc-number">06</div><div><h3>Application Email</h3><p>A ready-to-adapt covering email that brings the candidature together and opens the conversation.</p><div class="doc-actions"><a class="read" href="Troy_Latter_Good_Things_Application_Email.html">Read HTML →</a><a class="pdf" href="Troy_Latter_Good_Things_Application_Email.pdf" target="_blank" rel="noopener">Download PDF</a></div></div></article>
 </div>
-<div class="card">
-<h3>Board Capability Matrix</h3>
-<p>Strategy, people, commercial, risk, technology, government, partnerships and inclusion capabilities.</p>
-<a class="btn" href="./Troy_Latter_Board_Capability_Matrix.pdf" target="_blank" rel="noopener">View PDF</a>
-</div>
-<div class="card">
-<h3>Board Judgement in Practice</h3>
-<p>Three practical boardroom scenarios showing how Troy contributes to difficult decisions.</p>
-<a class="btn" href="./Troy_Latter_Board_Judgement_in_Practice.pdf" target="_blank" rel="noopener">View PDF</a>
-</div>
-<div class="card">
-<h3>Why Good Things Australia</h3>
-<p>Organisation-specific positioning focused on digital inclusion, AI literacy, safety and human outcomes.</p>
-<a class="btn" href="./Troy_Latter_Good_Things_Australia_Statement.pdf" target="_blank" rel="noopener">View PDF</a>
-</div>
-<div class="card">
-<h3>Application Email</h3>
-<p>Ready-to-adapt covering email for Good Things Australia.</p>
-<a class="btn" href="./Troy_Latter_Good_Things_Application_Email.pdf" target="_blank" rel="noopener">View PDF</a>
-</div>
-</div>
-
-<section class="intro" style="margin-top:24px">
-<h3 style="margin:0 0 8px;font-size:16px">How to use this pack</h3>
-<p style="margin:0">This pack is designed to be read in order. The Board CV and Board Profile establish who Troy is and what he brings. The Capability Matrix and Judgement in Practice documents show how he exercises judgement at board level. The Good Things statement and email tie the material to this specific opportunity.</p>
-</section>
-
-<footer>
-Accuracy note: Formal titles, dates, appointment designations, contact details and specific quantified outcomes should be checked against primary records before submission.
-</footer>
-</div>
+<div class="callout"><div><h2>The board question</h2><p>The common thread across the pack is a simple question: what becomes possible for people if we get this right?</p></div><ul class="principles"><li>Strategy before technology</li><li>Evidence before aspiration</li><li>Capability, not just access</li><li>Safety, trust and agency</li></ul></div>
+</div></section>
+</main>
+<footer><div class="wrap">Good Things Australia board candidature pack | Troy Latter</div></footer>
 </body>
 </html>
