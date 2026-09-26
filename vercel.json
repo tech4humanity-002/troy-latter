@@ -36,6 +36,16 @@
       "source": "/EY-Parthenon/",
       "destination": "/ey-parthenon/",
       "permanent": false
+    },
+    {
+      "source": "/EY-Defence-1744589",
+      "destination": "/ey-defence-1744589/",
+      "permanent": false
+    },
+    {
+      "source": "/EY-Defence-1744589/",
+      "destination": "/ey-defence-1744589/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -50,6 +60,14 @@
     {
       "source": "/ey-parthenon/(.*)",
       "destination": "/ey-parthenon/$1"
+    },
+    {
+      "source": "/ey-defence-1744589",
+      "destination": "/ey-defence-1744589/index.html"
+    },
+    {
+      "source": "/ey-defence-1744589/(.*)",
+      "destination": "/ey-defence-1744589/$1"
     },
     {
       "source": "/good-things",
