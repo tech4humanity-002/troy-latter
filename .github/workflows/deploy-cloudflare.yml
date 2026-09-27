@@ -33,9 +33,18 @@ jobs:
           test -f dist/ey-defence-1744589/index.html
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4"
           command: pages deploy dist --project-name=troy-latter-defence
+
+      - name: Smoke test deployed site
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: |
+          test -n "$DEPLOYMENT_URL"
+          curl --fail --silent --show-error --location "$DEPLOYMENT_URL/ey-defence-1744589/" >/tmp/ey.html
+          grep -qi "<html" /tmp/ey.html
