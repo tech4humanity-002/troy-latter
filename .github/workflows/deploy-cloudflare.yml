@@ -1,4 +1,5 @@
 name: Deploy Troy Latter to Cloudflare Pages
+# Force a fresh deployment path after the stalled agent run.
 
 on:
   push:
@@ -15,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -31,6 +32,7 @@ jobs:
           test -f dist/highland-property/cover-letter.html
           test -f dist/highland-property/evidence.html
           test -f dist/ey-defence-1744589/index.html
+          test -f dist/highland-property/index.html
 
       - name: Deploy to Cloudflare Pages
         id: deploy
@@ -48,3 +50,5 @@ jobs:
           test -n "$DEPLOYMENT_URL"
           curl --fail --silent --show-error --location "$DEPLOYMENT_URL/ey-defence-1744589/" >/tmp/ey.html
           grep -qi "<html" /tmp/ey.html
+          curl --fail --silent --show-error --location "$DEPLOYMENT_URL/highland-property/" >/tmp/highland.html
+          grep -qi "<html" /tmp/highland.html
