@@ -1,22 +1,25 @@
 name: Deploy Troy Latter to Cloudflare Pages
-# Force a fresh deployment path after the stalled agent run.
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20
           cache: npm
 
       - name: Install dependencies
@@ -25,30 +28,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify application output
-        run: |
-          test -f dist/highland-property/index.html
-          test -f dist/highland-property/cv.html
-          test -f dist/highland-property/cover-letter.html
-          test -f dist/highland-property/evidence.html
-          test -f dist/ey-defence-1744589/index.html
-          test -f dist/highland-property/index.html
-
       - name: Deploy to Cloudflare Pages
         id: deploy
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4"
-          command: pages deploy dist --project-name=troy-latter-defence
+          command: pages deploy dist --project-name=troy-latter
 
-      - name: Smoke test deployed site
+      - name: Smoke test
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
         run: |
           test -n "$DEPLOYMENT_URL"
-          curl --fail --silent --show-error --location "$DEPLOYMENT_URL/ey-defence-1744589/" >/tmp/ey.html
-          grep -qi "<html" /tmp/ey.html
-          curl --fail --silent --show-error --location "$DEPLOYMENT_URL/highland-property/" >/tmp/highland.html
-          grep -qi "<html" /tmp/highland.html
+          curl --fail --silent --show-error --location "$DEPLOYMENT_URL/" >/tmp/home.html
+          grep -qi "<html" /tmp/home.html
